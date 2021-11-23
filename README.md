@@ -7,3 +7,4 @@
       -> npm run build
 ```
 
+babel 추가 참고: https://babeljs.io/setup#installation  

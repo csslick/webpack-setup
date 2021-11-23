@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -15,8 +16,25 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+            name: 'images/[name].[ext]', //[폴더명][파일명][ext]
+        },
+      },
+      { // css loader
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      { // babel
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
@@ -31,6 +49,13 @@ module.exports = {
       filename: 'about.html',
       chunks: ['about']
     }),
-    new CleanWebpackPlugin(),  // build시 /dist 초기화
+    new CleanWebpackPlugin(),  // build시 /dist 초기화,
+    
+    // HTML img태그에서 이미지 불러올때 이미지 경로 dist로 옮김
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/images", to: "images" },
+      ],
+    }),
   ],
 };
