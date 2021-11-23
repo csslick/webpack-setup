@@ -15,12 +15,9 @@ module.exports = {
   },
   module: {
     rules: [
-      {
+      { // file-loader
         test: /\.(jpe?g|png|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-            name: 'images/[name].[ext]', //[폴더명][파일명][ext]
-        },
+        use: ['file-loader']
       },
       { // css loader
         test: /\.css$/,
