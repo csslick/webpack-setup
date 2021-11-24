@@ -8,3 +8,9 @@
 ```
 
 babel 추가 참고: https://babeljs.io/setup#installation  
+
+## 웹팩 플러그인
+1. build시 dist에 html(template) 생성
+  https://webpack.kr/plugins/html-webpack-plugin/
+2. 빌드경로 초기화  
+  https://www.npmjs.com/package/clean-webpack-plugin

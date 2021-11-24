@@ -39,7 +39,7 @@ module.exports = {
     new HtmlWebpackPlugin({ // index.html(기본)
       template: 'src/index.html',
       filename: 'index.html',
-      chunks: ['index'] // entry 속성 값
+      chunks: ['index'] // entry 속성 값, 해당 js만 로드
     }),
     new HtmlWebpackPlugin({ // 추가할 페이지에 설정
       template: 'src/about.html',
