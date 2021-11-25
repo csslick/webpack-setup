@@ -1,0 +1,18 @@
+
+body {
+  background: goldenrod;
+  background: url(./images/bg_introduction.jpg);
+  color: #fff;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* outline: 1px solid red; */
+  padding: 0 30px;
+}

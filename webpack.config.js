@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -20,8 +21,19 @@ module.exports = {
         use: ['file-loader']
       },
       { // css loader
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1,
+                  url: false
+                }
+              },
+              'postcss-loader',
+              'sass-loader'
+            ]
       },
       { // babel
         test: /\.m?js$/,
@@ -52,7 +64,9 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/images", to: "images" },
+        { from: "src/global.css", to: "./" }
       ],
     }),
+    new MiniCssExtractPlugin(), // JS파일별 style 생성
   ],
 };

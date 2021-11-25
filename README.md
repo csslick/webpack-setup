@@ -14,3 +14,5 @@ babel 추가 참고: https://babeljs.io/setup#installation
   https://webpack.kr/plugins/html-webpack-plugin/
 2. 빌드경로 초기화  
   https://www.npmjs.com/package/clean-webpack-plugin
+3. css파일 개별 생성(css를 import한 js) webpack v5
+  https://webpack.js.org/plugins/mini-css-extract-plugin/
